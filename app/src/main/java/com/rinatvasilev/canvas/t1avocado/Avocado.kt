@@ -16,8 +16,6 @@ import com.rinatvasilev.canvas.ui.theme.CanvasTheme
 
 @Composable
 fun Avocado() {
-    //val backgroundColor = listOf(Color(0xFFFEDFFF), Color(0xFFADBFFF))
-    //drawRoundRect(brush = Brush.verticalGradient(backgroundColor))
 
     Canvas(modifier = Modifier.size(250.dp)) {
 
