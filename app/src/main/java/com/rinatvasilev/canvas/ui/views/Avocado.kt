@@ -1,4 +1,4 @@
-package com.rinatvasilev.canvas.t1avocado
+package com.rinatvasilev.canvas.ui.views
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
