@@ -3,7 +3,7 @@ package com.rinatvasilev.canvas
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -18,8 +18,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             CanvasTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                Surface(modifier = Modifier.aspectRatio(1f), color = MaterialTheme.colors.background) {
+                    //Greeting("Android")
+                    Demo()
                 }
             }
         }
@@ -45,6 +46,7 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     CanvasTheme {
-        Greeting("Android")
+        Demo()
+        //Greeting("Android")
     }
 }
