@@ -1,7 +1,7 @@
 package com.rinatvasilev.canvas
 
 import android.os.Bundle
-import android.view.animation.OvershootInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
@@ -19,6 +19,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,18 +61,18 @@ fun Navigation() {
 
 @Composable
 fun SplashScreen(navController: NavController) {
-    val scale = remember {
-        Animatable(0f)
-    }
+    val maxValue = 0.4f
+    val scaleAndRotate = remember { Animatable(0.01f) }
 
     LaunchedEffect(key1 = true) {
-        scale.animateTo(
-            targetValue = 0.4f,
+        scaleAndRotate.animateTo(
+            targetValue = maxValue,
             animationSpec = tween(
-                durationMillis = 800,
-                easing = { OvershootInterpolator(4f).getInterpolation(it) }
+                durationMillis = 500,
+                easing = { DecelerateInterpolator(1f).getInterpolation(it) }
             )
         )
+
         navController.popBackStack()
         navController.navigate("main_screen")
     }
@@ -80,10 +81,19 @@ fun SplashScreen(navController: NavController) {
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        Box(modifier = Modifier.scale(scale.value)) {
+        Box(
+            modifier = Modifier
+                .scale(scaleAndRotate.value)
+                .rotate(calculateDegree(value = scaleAndRotate.value, maxValue = maxValue))
+        ) {
             Avocado()
         }
     }
+}
+
+private fun calculateDegree(value: Float, maxValue: Float): Float {
+    val valuePercent = (value * 100f) / maxValue
+    return (360f * valuePercent) / 100f
 }
 
 @Composable
