@@ -1,7 +1,7 @@
 package com.rinatvasilev.canvas
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,7 +16,7 @@ import com.rinatvasilev.canvas.ui.theme.CanvasTheme
 
 @Composable
 fun Demo() {
-    Canvas(modifier = Modifier.size(250.dp)) {
+    Canvas(modifier = Modifier.aspectRatio(1f)) {
         val width = size.width
         val height = size.height
 
