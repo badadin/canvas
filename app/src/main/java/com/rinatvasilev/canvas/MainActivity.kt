@@ -10,18 +10,19 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,7 +55,7 @@ fun Navigation() {
         }
 
         composable("main_screen") {
-            TutorialsList()
+            ArtsList()
         }
     }
 }
@@ -97,17 +98,32 @@ private fun calculateDegree(value: Float, maxValue: Float): Float {
 }
 
 @Composable
-fun TutorialsList() {
+fun ArtsList() {
     CanvasTheme {
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            LazyColumn {
-                items(TutorialList.getData()) {
-                    ListItem(item = it)
-                    Divider(
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        color = Color(0x805F5F5F),
-                        thickness = 1.dp
-                    )
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(text = stringResource(id = R.string.canvasArts))
+                    },
+                    actions = {
+                        IconButton(onClick = { /* todo link to github */ }) {
+                            Icon(painter = painterResource(id = R.drawable.ic_github), contentDescription = null)
+                        }
+                    }
+                )
+            }) {
+            Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                LazyColumn {
+                    items(ArtList.getData()) {
+                        ListItem(item = it)
+                        Divider(
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                            color = Color(0x805F5F5F),
+                            thickness = 1.dp
+                        )
+                    }
                 }
             }
         }
@@ -115,18 +131,23 @@ fun TutorialsList() {
 }
 
 @Composable
-fun ListItem(item: Tutorial) {
-    val name = TutorialList.getNameById(item.id)
+fun ListItem(item: Art) {
+    val name = ArtList.getNameById(item.id)
 
     Row(
         modifier = Modifier
             .padding(all = 16.dp)
+            .clip(RoundedCornerShape(16.dp))
             .clickable {
-
+                //todo
             },
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier.size(128.dp)) {
+        //todo разобраться, почему такое толстое-жирное (на сплеше не жирное. из-за скейла?)
+        // нет, сделать не точные размеры, а высчитывать проценты у вьюх
+        // то есть, не Stroke(width = 15f), а вместо 15 - высчитать
+
+        Box(modifier = Modifier.size(200.dp)) {
             when (item.id) {
                 ID.AVOCADO -> Avocado()
                 ID.BANANA -> Banana()
@@ -159,5 +180,5 @@ fun ListItem(item: Tutorial) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    TutorialsList()
+    ArtsList()
 }

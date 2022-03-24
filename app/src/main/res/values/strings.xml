@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Canvas</string>
+    <string name="appName">Canvas</string>
+    <string name="canvasArts">Canvas arts</string>
 </resources>
