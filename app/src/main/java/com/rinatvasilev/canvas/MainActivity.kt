@@ -54,7 +54,7 @@ fun Navigation() {
             SplashScreen(navController = navController)
         }
 
-        composable("main_screen") {
+        composable("art_list_screen") {
             ArtsList()
         }
     }
@@ -75,7 +75,7 @@ fun SplashScreen(navController: NavController) {
         )
 
         navController.popBackStack()
-        navController.navigate("main_screen")
+        navController.navigate("art_list_screen")
     }
 
     Box(
@@ -116,7 +116,7 @@ fun ArtsList() {
             }) {
             Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                 LazyColumn {
-                    items(ArtList.getData()) {
+                    items(Arts.getData()) {
                         ListItem(item = it)
                         Divider(
                             modifier = Modifier.padding(horizontal = 16.dp),
@@ -132,7 +132,7 @@ fun ArtsList() {
 
 @Composable
 fun ListItem(item: Art) {
-    val name = ArtList.getNameById(item.id)
+    val name = Arts.getNameById(item.id)
 
     Row(
         modifier = Modifier

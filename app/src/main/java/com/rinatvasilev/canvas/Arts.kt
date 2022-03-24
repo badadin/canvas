@@ -8,7 +8,7 @@ enum class ID {
     AVOCADO, BANANA
 }
 
-class ArtList {
+class Arts {
     companion object {
         fun getData(): List<Art> {
             return arrayListOf(
