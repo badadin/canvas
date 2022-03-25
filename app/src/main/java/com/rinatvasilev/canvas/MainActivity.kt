@@ -1,5 +1,7 @@
 package com.rinatvasilev.canvas
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -83,6 +86,9 @@ fun Navigation() {
 
 @Composable
 fun topBar(navController: NavHostController, currentScreen: Screens, currentTitle: String): @Composable () -> Unit {
+    val context = LocalContext.current
+    val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/badadin/canvas")) }
+
     return if (currentScreen == Screens.SPLASH) {
         {}
     } else {
@@ -94,7 +100,9 @@ fun topBar(navController: NavHostController, currentScreen: Screens, currentTitl
                 },
                 actions = if (currentScreen == Screens.ART_LIST) {
                     {
-                        IconButton(onClick = { /* todo link to github */ }) {
+                        IconButton(onClick = {
+                            context.startActivity(intent)
+                        }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_github),
                                 contentDescription = null
