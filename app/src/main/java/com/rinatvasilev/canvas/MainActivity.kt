@@ -51,9 +51,17 @@ fun Navigation() {
             )
         ) { entry ->
             val artName = entry.arguments?.getString("name")
-            ArtDetails(artName = artName, onBackClickListener = {
-                navController.popBackStack()
-            })
+            artName?.let {
+                val id = try {
+                    ID.valueOf(it)
+                } catch (ex: Throwable) {
+                    ID.AVOCADO
+                }
+
+                ArtDetails(artID = id, onBackClickListener = {
+                    navController.popBackStack()
+                })
+            }
         }
     }
 }

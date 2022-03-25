@@ -5,19 +5,23 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import com.rinatvasilev.canvas.Arts
+import com.rinatvasilev.canvas.ID
 import com.rinatvasilev.canvas.R
 import com.rinatvasilev.canvas.ui.theme.CanvasTheme
+import com.rinatvasilev.canvas.ui.views.Avocado
+import com.rinatvasilev.canvas.ui.views.Banana
 
 @Composable
-fun ArtDetails(artName: String?, onBackClickListener: () -> Unit) {
+fun ArtDetails(artID: ID, onBackClickListener: () -> Unit) {
+
     CanvasTheme {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 TopAppBar(
                     title = {
-                        Text(text = stringResource(id = R.string.canvasArts))
+                        Text(text = Arts.getNameById(artID).title)
                     },
                     navigationIcon = {
                         IconButton(onClick = { onBackClickListener() }) {
@@ -30,7 +34,10 @@ fun ArtDetails(artName: String?, onBackClickListener: () -> Unit) {
                 )
             }) {
             Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                // todo
+                when (artID) {
+                    ID.AVOCADO -> Avocado()
+                    ID.BANANA -> Banana()
+                }
             }
         }
     }
