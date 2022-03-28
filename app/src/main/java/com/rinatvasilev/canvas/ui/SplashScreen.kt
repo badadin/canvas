@@ -1,4 +1,4 @@
-package com.rinatvasilev.canvas
+package com.rinatvasilev.canvas.ui
 
 import android.view.animation.DecelerateInterpolator
 import androidx.compose.animation.core.Animatable
@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.navigation.NavController
+import com.rinatvasilev.canvas.Screens
 import com.rinatvasilev.canvas.ui.views.Avocado
 
 @Composable

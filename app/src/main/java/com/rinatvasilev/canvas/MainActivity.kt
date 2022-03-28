@@ -24,6 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.rinatvasilev.canvas.ui.ArtDetails
 import com.rinatvasilev.canvas.ui.ArtsList
+import com.rinatvasilev.canvas.ui.SplashScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
