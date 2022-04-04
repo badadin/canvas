@@ -22,6 +22,20 @@ fun Banana() {
         val width = size.width
         val height = size.height
 
+        drawBanana(width, height, ko4erizhkaColors)
+    }
+}
+
+@Composable
+fun Bananas() {
+
+    val ko4erizhkaColors = listOf(Color(0xFFAFC419), Color(0xFFD4CF0B))
+
+    Canvas(modifier = Modifier.aspectRatio(1f)) {
+
+        val width = size.width
+        val height = size.height
+
         rotate(degrees = 10f, pivot = Offset(x = width.times(0.835f), y = height.times(0.412f))) {
             drawBanana(width, height, ko4erizhkaColors)
         }
@@ -239,5 +253,13 @@ private fun DrawScope.drawBanana(width: Float, height: Float, ko4erizhkaColors: 
 fun BananaPreview() {
     CanvasTheme {
         Banana()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BananasPreview() {
+    CanvasTheme {
+        Bananas()
     }
 }
