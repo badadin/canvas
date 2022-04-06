@@ -22,6 +22,7 @@ import com.rinatvasilev.canvas.ID
 import com.rinatvasilev.canvas.ui.theme.CanvasTheme
 import com.rinatvasilev.canvas.ui.views.Avocado
 import com.rinatvasilev.canvas.ui.views.Banana
+import com.rinatvasilev.canvas.ui.views.Orange
 
 @Composable
 fun ArtsList(onItemClicked: (String) -> Unit) {
@@ -65,6 +66,7 @@ fun ListItem(item: Art, onItemClicked: (String) -> Unit) {
             when (item.id) {
                 ID.AVOCADO -> Avocado()
                 ID.BANANA -> Banana()
+                ID.ORANGE -> Orange()
             }
         }
 
