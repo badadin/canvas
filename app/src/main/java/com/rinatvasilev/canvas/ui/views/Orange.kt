@@ -79,46 +79,43 @@ fun Orange() {
         )
 
         rotate(degrees = -2f, pivot = Offset(width.times(0.429f), height.times(0.533f))) {
-            drawDolkaType1(width, height)
+            drawSliceType1(width, height)
         }
 
         rotate(degrees = 32f, pivot = Offset(width.times(0.429f), height.times(0.533f))) {
-            drawDolkaType1(width, height)
+            drawSliceType1(width, height)
         }
 
         rotate(degrees = 127f, pivot = Offset(width.times(0.465f), height.times(0.504f))) {
-            drawDolkaType1(width, height)
+            drawSliceType1(width, height)
         }
 
         rotate(degrees = -3f, pivot = Offset(width.times(0.455f), height.times(0.500f))) {
-            drawDolkaType2(width, height)
+            drawSliceType2(width, height)
         }
 
         rotate(degrees = 163f, pivot = Offset(width.times(0.455f), height.times(0.500f))) {
-            drawDolkaType1(width, height)
+            drawSliceType1(width, height)
         }
 
         rotate(degrees = 112f, pivot = Offset(width.times(0.455f), height.times(0.500f))) {
-            drawDolkaType2(width, height)
+            drawSliceType2(width, height)
         }
 
         rotate(degrees = 74f, pivot = Offset(width.times(0.456f), height.times(0.507f))) {
-            drawDolkaType2(width, height)
+            drawSliceType2(width, height)
         }
 
         rotate(degrees = 38f, pivot = Offset(width.times(0.456f), height.times(0.5207f))) {
-            drawDolkaType2(width, height)
+            drawSliceType2(width, height)
         }
 
-        rotate(degrees = -124f, pivot = Offset(width.times(0.460f), height.times(0.50f))) {
-            drawDolkaType3(width, height)
-        }
-        //0xFFFFFDE4
+        drawSliceType3(width, height)
     }
 }
 
-private fun DrawScope.drawDolkaType1(width: Float, height: Float) {
-    val pathDolka = Path().apply {
+private fun DrawScope.drawSliceType1(width: Float, height: Float) {
+    val pathSlice = Path().apply {
         moveTo(width.times(0.465f), height.times(0.236f))
 
         cubicTo(
@@ -140,15 +137,83 @@ private fun DrawScope.drawDolkaType1(width: Float, height: Float) {
         )
     }
 
+    val pathGlares = Path().apply {
+        moveTo(width.times(0.493f), height.times(0.275f))
+
+        cubicTo(
+            x1 = width.times(0.486f),
+            y1 = height.times(0.279f),
+            x2 = width.times(0.471f),
+            y2 = height.times(0.318f),
+            x3 = width.times(0.479f),
+            y3 = height.times(0.340f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.485f),
+            y1 = height.times(0.323f),
+            x2 = width.times(0.494f),
+            y2 = height.times(0.299f),
+            x3 = width.times(0.493f),
+            y3 = height.times(0.275f)
+        )
+
+        moveTo(width.times(0.534f), height.times(0.327f))
+
+        cubicTo(
+            x1 = width.times(0.534f),
+            y1 = height.times(0.308f),
+            x2 = width.times(0.542f),
+            y2 = height.times(0.286f),
+            x3 = width.times(0.557f),
+            y3 = height.times(0.264f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.553f),
+            y1 = height.times(0.307f),
+            x2 = width.times(0.556f),
+            y2 = height.times(0.292f),
+            x3 = width.times(0.534f),
+            y3 = height.times(0.327f)
+        )
+
+        moveTo(width.times(0.506f), height.times(0.349f))
+
+        cubicTo(
+            x1 = width.times(0.502f),
+            y1 = height.times(0.381f),
+            x2 = width.times(0.495f),
+            y2 = height.times(0.400f),
+            x3 = width.times(0.479f),
+            y3 = height.times(0.427f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.481f),
+            y1 = height.times(0.395f),
+            x2 = width.times(0.488f),
+            y2 = height.times(0.373f),
+            x3 = width.times(0.506f),
+            y3 = height.times(0.349f)
+        )
+    }
+
     drawPath(
-        path = pathDolka,
+        path = pathSlice,
         color = Color(0xFFFF9000),
-        style = Fill //Stroke(width = 10f, cap = StrokeCap.Round)
+        style = Fill
+    )
+
+    drawPath(
+        path = pathGlares,
+        color = Color(0xFFFDF376),
+        style = Fill
     )
 }
 
-private fun DrawScope.drawDolkaType2(width: Float, height: Float) {
-    val pathDolka = Path().apply {
+private fun DrawScope.drawSliceType2(width: Float, height: Float) {
+    val pathSlice = Path().apply {
         moveTo(width.times(0.239f), height.times(0.628f))
 
         cubicTo(
@@ -170,41 +235,156 @@ private fun DrawScope.drawDolkaType2(width: Float, height: Float) {
         )
     }
 
-    drawPath(
-        path = pathDolka,
-        color = Color(0xFFFF9000),
-        style = Fill //Stroke(width = 10f, cap = StrokeCap.Round)
-    )
-}
-
-private fun DrawScope.drawDolkaType3(width: Float, height: Float) {
-    val pathDolka = Path().apply {
-        moveTo(width.times(0.355f), height.times(0.725f))
+    val pathGlares = Path().apply {
+        moveTo(width.times(0.293f), height.times(0.670f))
 
         cubicTo(
-            x1 = width.times(0.432f),
-            y1 = height.times(0.520f),
-            x2 = width.times(0.449f),
-            y2 = height.times(0.521f),
-            x3 = width.times(0.236f),
-            y3 = height.times(0.611f)
+            x1 = width.times(0.303f),
+            y1 = height.times(0.643f),
+            x2 = width.times(0.323f),
+            y2 = height.times(0.627f),
+            x3 = width.times(0.342f),
+            y3 = height.times(0.610f)
         )
 
         cubicTo(
-            x1 = width.times(0.200f),
-            y1 = height.times(0.692f),
-            x2 = width.times(0.285f),
-            y2 = height.times(0.736f),
-            x3 = width.times(0.355f),
-            y3 = height.times(0.725f)
+            x1 = width.times(0.329f),
+            y1 = height.times(0.635f),
+            x2 = width.times(0.310f),
+            y2 = height.times(0.652f),
+            x3 = width.times(0.293f),
+            y3 = height.times(0.670f)
         )
 
+        moveTo(width.times(0.388f), height.times(0.575f))
+
+        cubicTo(
+            x1 = width.times(0.385f),
+            y1 = height.times(0.598f),
+            x2 = width.times(0.380f),
+            y2 = height.times(0.611f),
+            x3 = width.times(0.366f),
+            y3 = height.times(0.626f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.374f),
+            y1 = height.times(0.596f),
+            x2 = width.times(0.370f),
+            y2 = height.times(0.605f),
+            x3 = width.times(0.388f),
+            y3 = height.times(0.575f)
+        )
     }
 
     drawPath(
-        path = pathDolka,
+        path = pathSlice,
         color = Color(0xFFFF9000),
         style = Fill //Stroke(width = 10f, cap = StrokeCap.Round)
+    )
+
+    drawPath(
+        path = pathGlares,
+        color = Color(0xFFFDF376),
+        style = Fill
+    )
+}
+
+private fun DrawScope.drawSliceType3(width: Float, height: Float) {
+    val pathSlice = Path().apply {
+        moveTo(width.times(0.673f), height.times(0.621f))
+
+        cubicTo(
+            x1 = width.times(0.474f),
+            y1 = height.times(0.478f),
+            x2 = width.times(0.485f),
+            y2 = height.times(0.522f),
+            x3 = width.times(0.693f),
+            y3 = height.times(0.465f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.749f),
+            y1 = height.times(0.486f),
+            x2 = width.times(0.756f),
+            y2 = height.times(0.591f),
+            x3 = width.times(0.673f),
+            y3 = height.times(0.621f)
+        )
+    }
+
+    val pathGlares = Path().apply {
+        moveTo(width.times(0.564f), height.times(0.514f))
+
+        cubicTo(
+            x1 = width.times(0.583f),
+            y1 = height.times(0.520f),
+            x2 = width.times(0.607f),
+            y2 = height.times(0.507f),
+            x3 = width.times(0.628f),
+            y3 = height.times(0.525f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.600f),
+            y1 = height.times(0.530f),
+            x2 = width.times(0.584f),
+            y2 = height.times(0.527f),
+            x3 = width.times(0.564f),
+            y3 = height.times(0.514f)
+        )
+
+        moveTo(width.times(0.693f), height.times(0.512f))
+
+        cubicTo(
+            x1 = width.times(0.670f),
+            y1 = height.times(0.518f),
+            x2 = width.times(0.646f),
+            y2 = height.times(0.518f),
+            x3 = width.times(0.623f),
+            y3 = height.times(0.506f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.647f),
+            y1 = height.times(0.503f),
+            x2 = width.times(0.668f),
+            y2 = height.times(0.504f),
+            x3 = width.times(0.693f),
+            y3 = height.times(0.512f)
+        )
+
+        moveTo(width.times(0.620f), height.times(0.557f))
+
+        cubicTo(
+            x1 = width.times(0.645f),
+            y1 = height.times(0.551f),
+            x2 = width.times(0.663f),
+            y2 = height.times(0.552f),
+            x3 = width.times(0.683f),
+            y3 = height.times(0.566f)
+        )
+
+        cubicTo(
+            x1 = width.times(0.661f),
+            y1 = height.times(0.566f),
+            x2 = width.times(0.642f),
+            y2 = height.times(0.564f),
+            x3 = width.times(0.620f),
+            y3 = height.times(0.557f)
+        )
+    }
+
+    drawPath(
+        path = pathSlice,
+        color = Color(0xFFFF9000),
+        style = Fill
+    )
+
+    drawPath(
+        path = pathGlares,
+        color = Color(0xFFFDF376),
+        style = Fill
     )
 }
 
